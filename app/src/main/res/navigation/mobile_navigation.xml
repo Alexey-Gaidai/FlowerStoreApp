@@ -15,7 +15,11 @@
         android:id="@+id/navigation_catalog"
         android:name="com.example.flowerstoreapp.ui.catalog.CatalogFragment"
         android:label="@string/title_catalog"
-        tools:layout="@layout/fragment_catalog" />
+        tools:layout="@layout/fragment_catalog" >
+        <action
+            android:id="@+id/action_navigation_catalog_to_bouquetsFragment"
+            app:destination="@id/bouquetsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_cart"
@@ -27,4 +31,25 @@
         android:name="com.example.flowerstoreapp.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/bouquetsFragment"
+        android:name="com.example.flowerstoreapp.ui.catalog.bouquets.BouquetsFragment"
+        android:label="fragment_bouquets"
+        tools:layout="@layout/fragment_bouquets" >
+        <argument
+            android:name="flowerId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_bouquetsFragment_to_currentBouquetFragment"
+            app:destination="@id/currentBouquetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentBouquetFragment"
+        android:name="com.example.flowerstoreapp.ui.currentBouquet.CurrentBouquetFragment"
+        android:label="fragment_current_bouquet"
+        tools:layout="@layout/fragment_current_bouquet" >
+        <argument
+            android:name="bouquetId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

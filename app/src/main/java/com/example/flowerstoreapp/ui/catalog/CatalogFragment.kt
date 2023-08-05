@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flowerstoreapp.databinding.FragmentCatalogBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,6 +56,8 @@ class CatalogFragment : Fragment() {
     }
 
     private fun navigateToBouquetsByFlower(id: Int) {
+        val action = CatalogFragmentDirections.actionNavigationCatalogToBouquetsFragment(id)
+        findNavController().navigate(action)
         Toast.makeText(context, "Потом переход на букеты из конкретных цветов id: $id", Toast.LENGTH_SHORT).show()
     }
 }

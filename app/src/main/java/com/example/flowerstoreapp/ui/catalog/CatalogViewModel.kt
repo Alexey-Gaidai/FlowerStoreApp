@@ -13,19 +13,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class CatalogViewModel @Inject constructor(private val repository: FlowerStoreRepository) : ViewModel() {
+class CatalogViewModel @Inject constructor(private val repository: FlowerStoreRepository) :
+    ViewModel() {
 
     private val _flowers: MutableLiveData<List<Flower>> = MutableLiveData()
     val flowers: LiveData<List<Flower>> get() = _flowers
+    private val list = mutableListOf<Flower>()
 
     init {
         loadFlowers()
     }
 
-    private fun loadFlowers(){
+    private fun loadFlowers() {
         viewModelScope.launch(Dispatchers.IO) {
             val data = repository.getFlowers()
-            _flowers.postValue(data)
+            list.add(Flower(2111, "Все букеты"))
+            list.addAll(data)
+            _flowers.postValue(list)
         }
     }
 }
