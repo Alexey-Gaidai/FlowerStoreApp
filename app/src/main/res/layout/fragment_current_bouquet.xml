@@ -91,6 +91,7 @@
         tools:text="2599 P" />
 
     <Button
+        android:id="@id/btToCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

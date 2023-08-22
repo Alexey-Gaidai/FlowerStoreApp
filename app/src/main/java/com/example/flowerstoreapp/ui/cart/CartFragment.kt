@@ -4,40 +4,62 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flowerstoreapp.databinding.FragmentCartBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.flowerstoreapp.ui.catalog.bouquets.BouquetsAdapter
+import com.example.flowerstoreapp.ui.catalog.bouquets.BouquetsFragmentDirections
+import com.example.flowerstoreapp.ui.catalog.bouquets.BouquetsViewModel
 
 class CartFragment : Fragment() {
 
     private var _binding: FragmentCartBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private val adapter = CartAdapter {
+        navigateToSingleBouquet(it)
+    }
+
+    private val model: CartViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val cartViewModel =
-            ViewModelProvider(this).get(CartViewModel::class.java)
-
         _binding = FragmentCartBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textCart
-        cartViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeViewModel()
+        initRecyclerView()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun observeViewModel() {
+        lifecycleScope.launchWhenStarted {
+            model.cart.collect { items ->
+                adapter.submitList(items)
+            }
+        }
+    }
+
+    private fun initRecyclerView() {
+        binding.rvCart.adapter = adapter
+        binding.rvCart.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun navigateToSingleBouquet(bouquetId: Int) {
+        val action = CartFragmentDirections.actionNavigationCartToCurrentBouquetFragment(bouquetId)
+        findNavController().navigate(action)
     }
 }

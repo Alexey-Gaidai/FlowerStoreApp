@@ -11,8 +11,10 @@ import com.example.flowerstoreapp.R
 import com.example.flowerstoreapp.databinding.FragmentBouquetsBinding
 import com.example.flowerstoreapp.databinding.FragmentCatalogBinding
 import com.example.flowerstoreapp.databinding.FragmentCurrentBouquetBinding
+import com.example.flowerstoreapp.domain.models.CartItem
 import com.example.flowerstoreapp.domain.models.SingleBouquet
 import com.example.flowerstoreapp.ui.catalog.bouquets.BouquetsViewModel
+import com.example.flowerstoreapp.utils.ShoppingCart
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,6 +41,9 @@ class CurrentBouquetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+        binding.btToCart.setOnClickListener {
+            addToCart()
+        }
     }
 
     override fun onDestroyView() {
@@ -53,6 +58,11 @@ class CurrentBouquetFragment : Fragment() {
         }
     }
 
+    private fun addToCart() {
+        val itemToCart = CartItem( bouquet, 0)
+        ShoppingCart.addItem(itemToCart, requireContext())
+    }
+
     private fun initView() {
         Glide
             .with(binding.root)
@@ -60,9 +70,10 @@ class CurrentBouquetFragment : Fragment() {
             .into(binding.ivBouquetImage)
         binding.tvBouquetTitle.text = bouquet.name
         binding.tvDescriptionValue.text = bouquet.description
-        binding.tvCompositionValue.text = bouquet.bouquetComposition.joinToString(", ") { (quantity, flower) ->
-            "$flower: $quantity"
-        }
+        binding.tvCompositionValue.text =
+            bouquet.bouquetComposition.joinToString(", ") { (quantity, flower) ->
+                "$flower: $quantity"
+            }
         binding.tvPriceValue.text = bouquet.price.toString()
     }
 }

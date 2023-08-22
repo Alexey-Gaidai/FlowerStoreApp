@@ -25,7 +25,11 @@
         android:id="@+id/navigation_cart"
         android:name="com.example.flowerstoreapp.ui.cart.CartFragment"
         android:label="@string/title_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_navigation_cart_to_currentBouquetFragment"
+            app:destination="@id/currentBouquetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.flowerstoreapp.ui.profile.ProfileFragment"
