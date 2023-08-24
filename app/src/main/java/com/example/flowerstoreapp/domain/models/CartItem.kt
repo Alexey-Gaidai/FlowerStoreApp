@@ -1,6 +1,6 @@
 package com.example.flowerstoreapp.domain.models
 
 data class CartItem(
-    val product: SingleBouquet,
+    val product: Bouquets,
     var quantity: Int,
 )

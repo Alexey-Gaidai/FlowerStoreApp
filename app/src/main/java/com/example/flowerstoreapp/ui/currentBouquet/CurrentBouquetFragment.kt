@@ -11,6 +11,7 @@ import com.example.flowerstoreapp.R
 import com.example.flowerstoreapp.databinding.FragmentBouquetsBinding
 import com.example.flowerstoreapp.databinding.FragmentCatalogBinding
 import com.example.flowerstoreapp.databinding.FragmentCurrentBouquetBinding
+import com.example.flowerstoreapp.domain.models.Bouquets
 import com.example.flowerstoreapp.domain.models.CartItem
 import com.example.flowerstoreapp.domain.models.SingleBouquet
 import com.example.flowerstoreapp.ui.catalog.bouquets.BouquetsViewModel
@@ -59,7 +60,7 @@ class CurrentBouquetFragment : Fragment() {
     }
 
     private fun addToCart() {
-        val itemToCart = CartItem( bouquet, 0)
+        val itemToCart = CartItem(Bouquets(bouquet.description, bouquet.id, bouquet.imageUrl, bouquet.name, bouquet.price), 0)
         ShoppingCart.addItem(itemToCart, requireContext())
     }
 

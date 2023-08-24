@@ -51,6 +51,9 @@ class CartFragment : Fragment() {
                 adapter.submitList(items)
             }
         }
+        model.price.observe(viewLifecycleOwner) {
+            binding.tvTotalValue.text = it.toString().format("%.2f") + " ₽"
+        }
     }
 
     private fun initRecyclerView() {

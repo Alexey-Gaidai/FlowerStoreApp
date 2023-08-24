@@ -35,14 +35,14 @@ class ShoppingCart {
 
             val targetItem = cart.singleOrNull { it.product.id == cartItem.product.id }
             if (targetItem != null) {
-                if (targetItem.quantity > 0) {
+                if (targetItem.quantity > 1) {
                     targetItem.quantity--
                 } else {
                     cart.remove(targetItem)
                 }
+                ShoppingCart.saveCart(cart)
+                _cartFlow.value = cart
             }
-            _cartFlow.value = cart
-            ShoppingCart.saveCart(cart)
             Toast.makeText(context, "Товар удален из корзины", Toast.LENGTH_SHORT).show()
         }
 

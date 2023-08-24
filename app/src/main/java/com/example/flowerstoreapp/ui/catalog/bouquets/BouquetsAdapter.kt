@@ -9,7 +9,9 @@ import com.bumptech.glide.Glide
 import com.example.flowerstoreapp.databinding.ItemBouquetBinding
 import com.example.flowerstoreapp.databinding.ItemFlowerBinding
 import com.example.flowerstoreapp.domain.models.Bouquets
+import com.example.flowerstoreapp.domain.models.CartItem
 import com.example.flowerstoreapp.domain.models.Flower
+import com.example.flowerstoreapp.utils.ShoppingCart
 
 class BouquetsAdapter(private val onClick: (Int) -> Unit) :
     ListAdapter<Bouquets, BouquetsAdapter.ElementsViewHolder>(
@@ -37,6 +39,9 @@ class BouquetsAdapter(private val onClick: (Int) -> Unit) :
                 .into(binding.ivImage)
             binding.tvTitle.text = bouquets.name
             binding.tvPrice.text = bouquets.price.toString()
+            binding.btToCart.setOnClickListener{
+                ShoppingCart.addItem(CartItem(bouquets, 0), itemView.context)
+            }
             binding.root.setOnClickListener {
                 onClick(bouquets.id)
             }

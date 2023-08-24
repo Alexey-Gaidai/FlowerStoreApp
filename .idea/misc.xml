@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/font/open_sans_light.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/activity_login.xml" value="0.19021739130434784" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_blank.xml" value="0.1796875" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_bouquets.xml" value="0.19021739130434784" />
@@ -11,10 +12,13 @@
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_catalog.xml" value="0.19202898550724637" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_current_bouquet.xml" value="0.25" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_home.xml" value="0.19202898550724637" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_login.xml" value="0.19021739130434784" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_profile.xml" value="0.19202898550724637" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_register.xml" value="0.15" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/item_bouquet.xml" value="0.33" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/item_cart.xml" value="0.33" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/item_flower.xml" value="0.19021739130434784" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/menu_item_cart.xml" value="0.9" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27291666666666664" />
       </map>
     </option>

@@ -1,10 +1,12 @@
 package com.example.flowerstoreapp.data
 
+import android.util.Log
 import com.example.flowerstoreapp.data.nw.FlowerApi
 import com.example.flowerstoreapp.domain.FlowerStoreRepository
 import com.example.flowerstoreapp.domain.models.Bouquets
 import com.example.flowerstoreapp.domain.models.Flower
 import com.example.flowerstoreapp.domain.models.SingleBouquet
+import com.example.flowerstoreapp.domain.models.UserRegistration
 
 class FlowerStoreRepository_Impl(private val api: FlowerApi) : FlowerStoreRepository {
     override suspend fun getFlowers(): List<Flower> {
@@ -70,6 +72,35 @@ class FlowerStoreRepository_Impl(private val api: FlowerApi) : FlowerStoreReposi
                 price = 0.0,
                 bouquetComposition = emptyList()
             )
+        }
+    }
+
+    override suspend fun login(username: String, password: String) {
+        try{
+            val response = api.login(username, password)
+            if (response.isSuccessful) {
+                Log.d("login", "успешно")
+            }
+            else {
+                Log.d("login", response.code().toString())
+            }
+        } catch(ex: Exception) {
+            Log.d("login", ex.message.toString())
+        }
+    }
+
+    override suspend fun register(userRegistration: UserRegistration):String {
+        return try{
+            val response = api.register(userRegistration)
+            if (response.code() == 200) {
+                Log.d("register", response.body().toString())
+                response.body()!!.message
+            } else {
+                "Произошла ошибка"
+            }
+        } catch(ex: Exception) {
+            Log.d("register", ex.message.toString())
+            ex.message.toString()
         }
     }
 }
