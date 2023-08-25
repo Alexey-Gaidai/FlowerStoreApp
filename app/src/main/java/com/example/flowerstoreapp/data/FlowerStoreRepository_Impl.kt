@@ -1,6 +1,7 @@
 package com.example.flowerstoreapp.data
 
 import android.util.Log
+import com.example.flowerstoreapp.App
 import com.example.flowerstoreapp.data.nw.FlowerApi
 import com.example.flowerstoreapp.domain.FlowerStoreRepository
 import com.example.flowerstoreapp.domain.models.Bouquets
@@ -75,17 +76,21 @@ class FlowerStoreRepository_Impl(private val api: FlowerApi) : FlowerStoreReposi
         }
     }
 
-    override suspend fun login(username: String, password: String) {
-        try{
+    override suspend fun login(username: String, password: String): Int {
+        return try{
             val response = api.login(username, password)
             if (response.isSuccessful) {
-                Log.d("login", "успешно")
+                App.userManager.saveUser(response.body()!!.id.toString(), response.body()!!.name)
+                Log.d("code if success",response.code().toString())
+                response.code()
             }
             else {
-                Log.d("login", response.code().toString())
+                Log.d("code if not success",response.code().toString())
+                response.code()
             }
         } catch(ex: Exception) {
             Log.d("login", ex.message.toString())
+            400
         }
     }
 

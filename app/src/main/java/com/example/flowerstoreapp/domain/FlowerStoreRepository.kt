@@ -10,6 +10,6 @@ interface FlowerStoreRepository {
     suspend fun getAllBouquets(): List<Bouquets>
     suspend fun getBouquetsByFlower(flowerId: Int): List<Bouquets>
     suspend fun getBouquet(bouquetId: Int): SingleBouquet
-    suspend fun login(username: String, password: String)
+    suspend fun login(username: String, password: String): Int
     suspend fun register(userRegistration: UserRegistration): String
 }

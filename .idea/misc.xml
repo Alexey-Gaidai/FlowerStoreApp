@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/drawable/ic_baseline_apps_24.xml" value="0.1375" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/font/open_sans_light.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout-w1240dp/activity_login22.xml" value="0.16198125836680052" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout-w936dp/activity_login22.xml" value="0.14344262295081966" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/activity_login.xml" value="0.19021739130434784" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/activity_login22.xml" value="0.19021739130434784" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/activity_store.xml" value="0.19021739130434784" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_blank.xml" value="0.1796875" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_bouquets.xml" value="0.19021739130434784" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_cart.xml" value="0.19202898550724637" />

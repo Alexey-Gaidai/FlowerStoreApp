@@ -52,7 +52,8 @@ class CartFragment : Fragment() {
             }
         }
         model.price.observe(viewLifecycleOwner) {
-            binding.tvTotalValue.text = it.toString().format("%.2f") + " ₽"
+            val value = it.toString().format("%.2f") + " ₽"
+            binding.tvTotalValue.text = value
         }
     }
 
