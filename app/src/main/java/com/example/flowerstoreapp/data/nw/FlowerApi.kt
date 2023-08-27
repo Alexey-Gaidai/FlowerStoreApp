@@ -2,6 +2,7 @@ package com.example.flowerstoreapp.data.nw
 
 import com.example.flowerstoreapp.data.models.Message
 import com.example.flowerstoreapp.domain.models.Bouquets
+import com.example.flowerstoreapp.domain.models.CreateOrder
 import com.example.flowerstoreapp.domain.models.Flower
 import com.example.flowerstoreapp.domain.models.SingleBouquet
 import com.example.flowerstoreapp.domain.models.UserInfo
@@ -63,4 +64,7 @@ interface FlowerApi {
     suspend fun register(
         @Body userData: UserRegistration
     ): Response<Message>
+
+    @POST("api/Orders")
+    suspend fun createOrder(@Body createOrder: CreateOrder): Response<Message>
 }

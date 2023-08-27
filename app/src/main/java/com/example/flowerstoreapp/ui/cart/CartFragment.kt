@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -14,6 +15,7 @@ import com.example.flowerstoreapp.databinding.FragmentCartBinding
 import com.example.flowerstoreapp.ui.catalog.bouquets.BouquetsAdapter
 import com.example.flowerstoreapp.ui.catalog.bouquets.BouquetsFragmentDirections
 import com.example.flowerstoreapp.ui.catalog.bouquets.BouquetsViewModel
+import com.example.flowerstoreapp.utils.ShoppingCart
 
 class CartFragment : Fragment() {
 
@@ -38,6 +40,14 @@ class CartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         initRecyclerView()
+        binding.btOrder.setOnClickListener {
+            if (ShoppingCart.getShoppingCartSize() >= 1){
+                navigateToCreateOrder()
+            } else {
+                Toast.makeText(requireContext(), "Добавьте товары в корзину!", Toast.LENGTH_SHORT).show()
+            }
+
+        }
     }
 
     override fun onDestroyView() {
@@ -52,7 +62,7 @@ class CartFragment : Fragment() {
             }
         }
         model.price.observe(viewLifecycleOwner) {
-            val value = it.toString().format("%.2f") + " ₽"
+            val value = String.format("%.2f", it) + " ₽"
             binding.tvTotalValue.text = value
         }
     }
@@ -64,6 +74,11 @@ class CartFragment : Fragment() {
 
     private fun navigateToSingleBouquet(bouquetId: Int) {
         val action = CartFragmentDirections.actionNavigationCartToCurrentBouquetFragment(bouquetId)
+        findNavController().navigate(action)
+    }
+
+    private fun navigateToCreateOrder() {
+        val action = CartFragmentDirections.actionNavigationCartToOrderFragment()
         findNavController().navigate(action)
     }
 }

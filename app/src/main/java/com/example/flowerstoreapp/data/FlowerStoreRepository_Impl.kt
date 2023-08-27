@@ -5,6 +5,7 @@ import com.example.flowerstoreapp.App
 import com.example.flowerstoreapp.data.nw.FlowerApi
 import com.example.flowerstoreapp.domain.FlowerStoreRepository
 import com.example.flowerstoreapp.domain.models.Bouquets
+import com.example.flowerstoreapp.domain.models.CreateOrder
 import com.example.flowerstoreapp.domain.models.Flower
 import com.example.flowerstoreapp.domain.models.SingleBouquet
 import com.example.flowerstoreapp.domain.models.UserRegistration
@@ -81,7 +82,7 @@ class FlowerStoreRepository_Impl(private val api: FlowerApi) : FlowerStoreReposi
             val response = api.login(username, password)
             if (response.isSuccessful) {
                 App.userManager.saveUser(response.body()!!.id.toString(), response.body()!!.name)
-                Log.d("code if success",response.code().toString())
+                Log.d("code if success",response.code().toString() + response.body()!!.id)
                 response.code()
             }
             else {
@@ -106,6 +107,21 @@ class FlowerStoreRepository_Impl(private val api: FlowerApi) : FlowerStoreReposi
         } catch(ex: Exception) {
             Log.d("register", ex.message.toString())
             ex.message.toString()
+        }
+    }
+
+    override suspend fun createOrder(order: CreateOrder): Int {
+        return try{
+            val response = api.createOrder(order)
+            if (response.code() == 200) {
+                Log.d("register", response.body().toString())
+                response.code()
+            } else {
+                500
+            }
+        } catch(ex: Exception) {
+            Log.d("register", ex.message.toString())
+            400
         }
     }
 }

@@ -12,11 +12,11 @@ class UserManager(private val sharedPreferences: SharedPreferences) {
     }
 
     fun getUserId(): String {
-        return sharedPreferences.getString("id", null)!!
+        return sharedPreferences.getString("user_id", null)!!
     }
 
     fun getUserName(): String {
-        return sharedPreferences.getString("name", null)!!
+        return sharedPreferences.getString("user_name", null)!!
     }
 
     fun clearUserData() {

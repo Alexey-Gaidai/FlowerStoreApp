@@ -46,6 +46,20 @@ class ShoppingCart {
             Toast.makeText(context, "Товар удален из корзины", Toast.LENGTH_SHORT).show()
         }
 
+        fun clearCart() {
+            val cart = getCart()
+            cart.clear()
+            saveCart(cart)
+            _cartFlow.value = cart
+        }
+
+        fun getCartTotal(): String {
+            val cart = getCart()
+            val total = cart.sumOf { it.product.price * it.quantity }
+            val formattedTotal = String.format("%.2f", total)
+            return formattedTotal
+        }
+
         fun saveCart(cart: MutableList<CartItem>) {
             Paper.book().write("cart", cart)
         }
