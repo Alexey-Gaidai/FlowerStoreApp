@@ -7,6 +7,7 @@ import com.example.flowerstoreapp.domain.FlowerStoreRepository
 import com.example.flowerstoreapp.domain.models.Bouquets
 import com.example.flowerstoreapp.domain.models.CreateOrder
 import com.example.flowerstoreapp.domain.models.Flower
+import com.example.flowerstoreapp.domain.models.Orders
 import com.example.flowerstoreapp.domain.models.SingleBouquet
 import com.example.flowerstoreapp.domain.models.UserRegistration
 
@@ -122,6 +123,19 @@ class FlowerStoreRepository_Impl(private val api: FlowerApi) : FlowerStoreReposi
         } catch(ex: Exception) {
             Log.d("register", ex.message.toString())
             400
+        }
+    }
+
+    override suspend fun getUserOrders(): List<Orders> {
+        return try{
+            val response = api.getUserOrders(App.userManager.getUserId().toInt())
+            if (response.code() == 200) {
+                response.body()!!
+            } else {
+                response.body()!!
+            }
+        } catch(ex: Exception) {
+            emptyList<Orders>()
         }
     }
 }

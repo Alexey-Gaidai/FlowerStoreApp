@@ -8,13 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.flowerstoreapp.App
 import com.example.flowerstoreapp.R
-import com.example.flowerstoreapp.databinding.FragmentLoginBinding
 import com.example.flowerstoreapp.databinding.FragmentOrderBinding
-import com.example.flowerstoreapp.domain.models.CreateOrder
-import com.example.flowerstoreapp.domain.models.UserRegistration
-import com.example.flowerstoreapp.ui.login.LoginViewModel
 import com.example.flowerstoreapp.utils.ShoppingCart
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -4,6 +4,7 @@ import com.example.flowerstoreapp.data.models.Message
 import com.example.flowerstoreapp.domain.models.Bouquets
 import com.example.flowerstoreapp.domain.models.CreateOrder
 import com.example.flowerstoreapp.domain.models.Flower
+import com.example.flowerstoreapp.domain.models.Orders
 import com.example.flowerstoreapp.domain.models.SingleBouquet
 import com.example.flowerstoreapp.domain.models.UserInfo
 import com.example.flowerstoreapp.domain.models.UserRegistration
@@ -27,8 +28,8 @@ interface FlowerApi {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         private val okHttp =
             OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(6, TimeUnit.SECONDS)
+                .readTimeout(6, TimeUnit.SECONDS)
                 .addInterceptor(logger)
                 .build()
 
@@ -54,6 +55,9 @@ interface FlowerApi {
     @GET("api/Bouquets/{bouquetId}")
     suspend fun getBouquet(@Path("bouquetId") bouquetId: Int): Response<SingleBouquet>
 
+    @GET("api/Users/{userId}/Orders")
+    suspend fun getUserOrders(@Path("userId") userId: Int): Response<List<Orders>>
+
     @POST("api/users/login?")
     suspend fun login(
         @Query("username") username: String,
@@ -67,4 +71,6 @@ interface FlowerApi {
 
     @POST("api/Orders")
     suspend fun createOrder(@Body createOrder: CreateOrder): Response<Message>
+
+
 }

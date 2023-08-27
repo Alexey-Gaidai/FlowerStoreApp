@@ -22,11 +22,13 @@
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_login.xml" value="0.19021739130434784" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_order.xml" value="0.25" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_ordered.xml" value="0.19021739130434784" />
-        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_profile.xml" value="0.19202898550724637" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/fragment_register.xml" value="0.15" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/item_bouquet.xml" value="0.33" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/item_cart.xml" value="0.33" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/item_flower.xml" value="0.19021739130434784" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/item_items_in_order.xml" value="0.5" />
+        <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/item_orders.xml" value="0.33" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/layout/menu_item_cart.xml" value="0.9" />
         <entry key="..\:/Users/TheHa/AndroidStudioProjects/FlowerStoreApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27291666666666664" />
       </map>
