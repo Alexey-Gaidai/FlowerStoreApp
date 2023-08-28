@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.flowerstoreapp.databinding.ActivityMainBinding
 import com.example.flowerstoreapp.ui.login.OnLoginSuccessListener
+import com.example.flowerstoreapp.ui.profile.OnLogoutListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), OnLoginSuccessListener {
+class MainActivity : AppCompatActivity(), OnLoginSuccessListener{
 
     private lateinit var binding: ActivityMainBinding
 
@@ -28,4 +29,6 @@ class MainActivity : AppCompatActivity(), OnLoginSuccessListener {
         val intent = Intent(this, StoreActivity::class.java)
         startActivity(intent)
     }
+
+
 }

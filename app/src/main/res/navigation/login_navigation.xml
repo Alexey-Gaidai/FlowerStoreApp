@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.flowerstoreapp.ui.login.LoginFragment"
-        android:label="fragment_login"
+        android:label="Вход"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.flowerstoreapp.ui.register.RegisterFragment"
-        android:label="fragment_register"
+        android:label="Регистрация"
         tools:layout="@layout/fragment_register" />
 </navigation>

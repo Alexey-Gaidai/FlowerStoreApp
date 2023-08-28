@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.fragment.findNavController
 import com.example.flowerstoreapp.databinding.FragmentRegisterBinding
 import com.example.flowerstoreapp.domain.models.UserRegistration
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,10 +29,26 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btRegister.setOnClickListener {
-            register()
-        }
+        initRestrictions()
         observeViewModel()
+    }
+
+    private fun initRestrictions() {
+        binding.btRegister.setOnClickListener {
+            if (binding.etName.text.isBlank() || binding.etLastname.text.isBlank() || binding.etEmail.text.isBlank() || binding.etPhone.text.isBlank() || binding.etPassword.text.isBlank()) {
+                Toast.makeText(requireContext(), "Заполните все поля", Toast.LENGTH_SHORT).show()
+            } else if (binding.etRepeatPassword.text.toString() != binding.etPassword.text.toString()) {
+                Toast.makeText(requireContext(), "Пароли не совпадают", Toast.LENGTH_SHORT).show()
+            } else if (!binding.cbAgree.isChecked) {
+                Toast.makeText(
+                    requireContext(),
+                    "Примите соглашение с условиями",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                register()
+            }
+        }
     }
 
     override fun onDestroyView() {

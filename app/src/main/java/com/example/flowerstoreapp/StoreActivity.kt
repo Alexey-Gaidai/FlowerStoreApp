@@ -2,17 +2,19 @@ package com.example.flowerstoreapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.flowerstoreapp.databinding.ActivityStoreBinding
+import com.example.flowerstoreapp.ui.profile.OnLogoutListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import io.paperdb.Paper
 
 @AndroidEntryPoint
-class StoreActivity : AppCompatActivity() {
+class StoreActivity : AppCompatActivity(), OnLogoutListener {
 
     private lateinit var binding: ActivityStoreBinding
 
@@ -34,5 +36,10 @@ class StoreActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+    }
+
+    override fun onLogoutClicked() {
+        finish()
     }
 }

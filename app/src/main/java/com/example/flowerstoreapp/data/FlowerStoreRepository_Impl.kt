@@ -8,6 +8,7 @@ import com.example.flowerstoreapp.domain.models.Bouquets
 import com.example.flowerstoreapp.domain.models.CreateOrder
 import com.example.flowerstoreapp.domain.models.Flower
 import com.example.flowerstoreapp.domain.models.Orders
+import com.example.flowerstoreapp.domain.models.ProfileInfo
 import com.example.flowerstoreapp.domain.models.SingleBouquet
 import com.example.flowerstoreapp.domain.models.UserRegistration
 
@@ -82,6 +83,7 @@ class FlowerStoreRepository_Impl(private val api: FlowerApi) : FlowerStoreReposi
         return try{
             val response = api.login(username, password)
             if (response.isSuccessful) {
+                App.userManager.clearUserData()
                 App.userManager.saveUser(response.body()!!.id.toString(), response.body()!!.name)
                 Log.d("code if success",response.code().toString() + response.body()!!.id)
                 response.code()
@@ -136,6 +138,46 @@ class FlowerStoreRepository_Impl(private val api: FlowerApi) : FlowerStoreReposi
             }
         } catch(ex: Exception) {
             emptyList<Orders>()
+        }
+    }
+
+    override suspend fun getProfileInfo(): ProfileInfo {
+        return try{
+            val response = api.getUserInfo(App.userManager.getUserId().toInt())
+            if (response.code() == 200) {
+                response.body()!!
+            } else {
+                response.body()!!
+            }
+        } catch(ex: Exception) {
+            ProfileInfo("", "", "", "")
+
+        }
+    }
+
+    override suspend fun getTopSelling(): List<Bouquets> {
+        return try {
+            val response = api.getTopSelling()
+            if (response.isSuccessful) {
+                response.body()!!
+            } else {
+                emptyList()
+            }
+        } catch (ex: Exception) {
+            emptyList()
+        }
+    }
+
+    override suspend fun getTopSellingWithRoses(): List<Bouquets> {
+        return try {
+            val response = api.getTopSellingWithRoses()
+            if (response.isSuccessful) {
+                response.body()!!
+            } else {
+                emptyList()
+            }
+        } catch (ex: Exception) {
+            emptyList()
         }
     }
 }

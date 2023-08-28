@@ -5,6 +5,7 @@ import com.example.flowerstoreapp.domain.models.Bouquets
 import com.example.flowerstoreapp.domain.models.CreateOrder
 import com.example.flowerstoreapp.domain.models.Flower
 import com.example.flowerstoreapp.domain.models.Orders
+import com.example.flowerstoreapp.domain.models.ProfileInfo
 import com.example.flowerstoreapp.domain.models.SingleBouquet
 import com.example.flowerstoreapp.domain.models.UserInfo
 import com.example.flowerstoreapp.domain.models.UserRegistration
@@ -57,6 +58,15 @@ interface FlowerApi {
 
     @GET("api/Users/{userId}/Orders")
     suspend fun getUserOrders(@Path("userId") userId: Int): Response<List<Orders>>
+
+    @GET("api/Users/{userId}")
+    suspend fun getUserInfo(@Path("userId") userId: Int): Response<ProfileInfo>
+
+    @GET("api/Bouquets/TopSelling")
+    suspend fun getTopSelling(): Response<List<Bouquets>>
+
+    @GET("api/Bouquets/TopSellingWithRoses")
+    suspend fun getTopSellingWithRoses(): Response<List<Bouquets>>
 
     @POST("api/users/login?")
     suspend fun login(

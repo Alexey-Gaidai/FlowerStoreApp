@@ -25,6 +25,7 @@ class CartFragment : Fragment() {
         navigateToSingleBouquet(it)
     }
 
+
     private val model: CartViewModel by viewModels()
 
     override fun onCreateView(
